@@ -1,0 +1,45 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+
+# Build files
+dist/
+.vite/
+
+# Editor/IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables & API keys (important!)
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.firebase/
+firestore-debug.log
+
+# Firebase hosting & deployment files
+.firebase/
+firestore-debug.log
+.storage/
+
+# Logs
+*.log
+logs/
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+*.lock
