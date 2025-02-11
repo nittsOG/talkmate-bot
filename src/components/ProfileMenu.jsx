@@ -6,6 +6,9 @@ import "../styles/ProfileMenu.css";
 
 const ProfileMenu = ({ user, refreshSessions }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -32,17 +35,15 @@ const ProfileMenu = ({ user, refreshSessions }) => {
         const messagesQuery = collection(db, "chats", chat.id, "messages");
         const messagesSnapshot = await getDocs(messagesQuery);
 
-        // ✅ Delete all messages first
         for (const message of messagesSnapshot.docs) {
           await deleteDoc(doc(db, "chats", chat.id, "messages", message.id));
         }
 
-        // ✅ Then delete the chat session itself
         await deleteDoc(doc(db, "chats", chat.id));
       }
 
       if (typeof refreshSessions === "function") {
-        refreshSessions(); // ✅ Auto-refresh sessions
+        refreshSessions();
       }
 
       alert("✅ All data cleared successfully!");
@@ -52,35 +53,34 @@ const ProfileMenu = ({ user, refreshSessions }) => {
     }
   };
 
+  // ✅ Open Delete Account Modal
+  const handleOpenDeleteModal = () => {
+    setShowPasswordModal(true);
+    setError("");
+  };
+
   // ✅ Delete Account (Deletes user + all data)
   const handleDeleteAccount = async () => {
     if (!user) return;
-    const confirmDelete = window.confirm("Are you sure you want to delete your account? This action is irreversible!");
 
-    if (confirmDelete) {
-      try {
-        // ✅ Step 1: Ask user to reauthenticate
-        const password = prompt("For security, please enter your password:");
-        if (!password) return alert("Account deletion canceled.");
+    try {
+      const credential = EmailAuthProvider.credential(user.email, password);
+      await reauthenticateWithCredential(user, credential);
 
-        const credential = EmailAuthProvider.credential(user.email, password);
-        await reauthenticateWithCredential(user, credential);
+      await handleClearData();
 
-        // ✅ Step 2: Clear all user data before deleting the account
-        await handleClearData();
+      await deleteUser(auth.currentUser);
 
-        // ✅ Step 3: Delete user from Firebase Authentication
-        await deleteUser(auth.currentUser);
-
-        alert("✅ Account and all related data deleted successfully!");
-        window.location.href = "/login";
-      } catch (error) {
-        console.error("❌ Error deleting account:", error);
-        if (error.code === "auth/requires-recent-login") {
-          alert("⚠️ Please log out and log in again before deleting your account.");
-        } else {
-          alert("Failed to delete account. Please try again.");
-        }
+      alert("✅ Account and all related data deleted successfully!");
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("❌ Error deleting account:", error);
+      if (error.code === "auth/wrong-password") {
+        setError("Incorrect password. Please try again.");
+      } else if (error.code === "auth/requires-recent-login") {
+        setError("⚠️ Please log out and log in again before deleting your account.");
+      } else {
+        setError("Failed to delete account. Please try again.");
       }
     }
   };
@@ -92,8 +92,28 @@ const ProfileMenu = ({ user, refreshSessions }) => {
         <div className="profile-dropdown">
           <p>{user.email}</p>
           <button onClick={handleClearData}>🗑 Clear Data</button>
-          <button onClick={handleDeleteAccount}>🚨 Delete Account</button>
+          <button onClick={handleOpenDeleteModal}>🚨 Delete Account</button>
           <button onClick={handleLogout}>🚪 Logout</button>
+        </div>
+      )}
+
+      {showPasswordModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Confirm Account Deletion</h3>
+            <p>Enter your password to proceed:</p>
+            <input 
+              type="password" 
+              placeholder="Password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <p className="error-message">{error}</p>}
+            <div className="modal-buttons">
+              <button onClick={handleDeleteAccount} className="delete-btn">Confirm Delete</button>
+              <button onClick={() => setShowPasswordModal(false)} className="cancel-btn">Cancel</button>
+            </div>
+          </div>
         </div>
       )}
     </div>
