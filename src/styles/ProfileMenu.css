@@ -1,0 +1,37 @@
+.profile-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profile-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .profile-dropdown {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .profile-dropdown button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-dropdown button:hover {
+    background: #f0f0f0;
+  }
+  

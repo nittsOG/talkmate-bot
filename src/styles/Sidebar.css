@@ -1,0 +1,33 @@
+.sidebar {
+    width: 250px;
+    background: #f8f9fa;
+    height: 100vh;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .new-chat-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .chat-history {
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .chat-item {
+    padding: 10px;
+    background: white;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  

@@ -6,7 +6,7 @@ import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDAKsuq66KU7OvIjkhAESEb8-sf6z87jw4",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "talkmate-14e25.firebaseapp.com",
   projectId: "talkmate-14e25",
   storageBucket: "talkmate-14e25.firebasestorage.app",

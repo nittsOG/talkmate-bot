@@ -1,0 +1,17 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #007bff;
+    color: white;
+  }
+  
+  .profile-btn {
+    background: white;
+    color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
