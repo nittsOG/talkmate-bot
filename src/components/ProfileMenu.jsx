@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { auth } from "../firebaseConfig";
+import { auth, db } from "../firebaseConfig"; // ✅ Import db
 import { signOut } from "firebase/auth";
 import { collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
-import DeleteAccount from "./DeleteAccount"; // ✅ Import DeleteAccount Component
+import DeleteAccount from "./DeleteAccount";
 import "../styles/ProfileMenu.css";
 
 const ProfileMenu = ({ user, refreshSessions }) => {
@@ -40,7 +40,7 @@ const ProfileMenu = ({ user, refreshSessions }) => {
       }
 
       if (typeof refreshSessions === "function") {
-        await refreshSessions(); // Ensure session list refreshes after clearing
+        await refreshSessions();
       }
 
       alert("✅ All data cleared successfully!");
@@ -52,7 +52,6 @@ const ProfileMenu = ({ user, refreshSessions }) => {
 
   return (
     <div className="profile-container">
-      {/* ✅ Updated Profile Button Design */}
       <button className="button" onClick={toggleMenu}>
         <svg className="svg-icon" fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
           <g stroke="white" strokeLinecap="round" strokeWidth="1.5">
@@ -76,7 +75,6 @@ const ProfileMenu = ({ user, refreshSessions }) => {
         </div>
       )}
 
-      {/* ✅ Delete Account Modal (Using DeleteAccount Component) */}
       {showDeleteModal && (
         <DeleteAccount 
           user={user} 

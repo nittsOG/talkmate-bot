@@ -13,7 +13,10 @@ const Sidebar = ({ sessions, onNewChat, onSelectSession, refreshSessions }) => {
   const handleDeleteSession = async (sessionId) => {
     try {
       await deleteDoc(doc(db, "chats", sessionId));
-      refreshSessions();  // ✅ Auto-refresh after deletion
+      
+      if (refreshSessions) { // ✅ Avoids undefined function error
+        refreshSessions(); // ✅ Auto-refresh sessions
+      }
     } catch (error) {
       console.error("Error deleting session:", error);
     }

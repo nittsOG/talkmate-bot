@@ -124,7 +124,13 @@ function Chat({ user }) {
 
   return (
     <div className="app-container">
-      <Sidebar sessions={sessions} onNewChat={handleNewChat} onSelectSession={loadChat} />
+      <Sidebar 
+  sessions={sessions} 
+  onNewChat={handleNewChat} 
+  onSelectSession={loadChat} 
+  refreshSessions={fetchSessions} // ✅ Fix refresh issue
+/>
+
       <div className="chat-section"> 
         <div className="chat-window">
           {messages.map((msg, index) => (

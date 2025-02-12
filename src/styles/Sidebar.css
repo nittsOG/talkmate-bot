@@ -83,3 +83,9 @@
   color: red;
   font-weight: bold;
 }
+
+.no-history {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
