@@ -1,19 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Arial", sans-serif;
-  }
-  
-  body {
-    background-color: #f4f4f4;
-  }
-  
-  .app-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-  }
-  
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.chat-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+

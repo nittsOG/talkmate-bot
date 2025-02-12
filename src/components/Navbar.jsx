@@ -5,8 +5,8 @@ import "../styles/Navbar.css";
 const Navbar = ({ user, refreshSessions }) => {
   return (
     <div className="navbar">
-      <h2>TalkMate</h2>
-      <ProfileMenu user={user} refreshSessions={refreshSessions} />
+      <h2 className="navbar-title">TalkMate</h2>
+      <ProfileMenu user={user} refreshSessions={refreshSessions}  /> {/* ✅ Only one instance here */}
     </div>
   );
 };
