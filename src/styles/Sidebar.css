@@ -15,13 +15,16 @@
 .new-chat-btn {
   width: 100%;
   padding: 10px;
-  background-color: #05c957;
+  background-color: #00bd4f;
   color: white;
   border: none;
   cursor: pointer;
   font-weight: bold;
   border-radius: 5px;
   
+}
+.new-chat-btn:hover {
+  background-color: #0c552a
 }
 
 .chat-history {
