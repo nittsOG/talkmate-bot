@@ -12,10 +12,26 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const getFriendlyErrorMessage = (errorCode) => {
+    const errorMessages = {
+      "auth/invalid-email": "Invalid email format. Please enter a valid email.",
+      "auth/user-not-found": "No account found with this email. Please sign up.",
+      "auth/invalid-credential": "Invalid credentials. Please try again.",
+      "auth/wrong-password": "Incorrect password. Please try again.",
+      "auth/email-already-in-use": "This email is already registered. Try logging in.",
+      "auth/weak-password": "Password must be at least 6 characters long.",
+      "auth/too-many-requests": "Too many failed attempts. Please try again later.",
+      "auth/network-request-failed": "Network error. Check your internet connection.",
+    };
+  
+    return errorMessages[errorCode] || "An unexpected error occurred. Please try again.";
+  };
+  
+
   const handleAuth = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
@@ -26,11 +42,12 @@ const Login = () => {
         }
         await createUserWithEmailAndPassword(auth, email, password);
       }
-      navigate("/chat");  // Redirect to chat after login/signup
+      navigate("/chat"); // Redirect after login/signup
     } catch (err) {
-      setError(err.message);
+      setError(getFriendlyErrorMessage(err.code)); // Use friendly error messages
     }
   };
+  
 
   return (
     <div className="login-page">
