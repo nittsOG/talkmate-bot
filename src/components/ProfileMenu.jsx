@@ -89,11 +89,12 @@ const ProfileMenu = ({ user, refreshSessions }) => {
       )}
 
       {showDeleteModal && (
-        <DeleteAccount 
-          user={user} 
-          refreshSessions={refreshSessions} 
-          onClose={() => setShowDeleteModal(false)} 
-        />
+       <DeleteAccount 
+       user={user} 
+       refreshSessions={refreshSessions} 
+       onCancel={() => setShowDeleteModal(false)} 
+     />
+     
       )}
     </div>
   );
