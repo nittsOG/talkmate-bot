@@ -32,7 +32,7 @@ TalkMate is an AI-powered chatbot that allows users to have seamless conversatio
 ### 📦 1. Clone the Repository
 
 ```sh
-git clone [https://github.com/nittsOG/talkmate-bot.git](https://github.com/nittsOG/talkmate-bot.git)
+git clone https://github.com/nittsOG/talkmate-bot.git
 cd TalkMate
 ```
 
