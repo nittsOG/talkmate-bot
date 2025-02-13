@@ -136,10 +136,10 @@ function Chat({ user }) {
           {messages.map((msg, index) => (
             <div key={index}>
               <div className="message-bubble user">
-                <p><strong>You:</strong> {msg.userQuery}</p>
+                <p><strong><h3>You :</h3></strong> {msg.userQuery}</p>
               </div>
               <div className="message-bubble ai">
-                <p><strong>AI:</strong> {msg.aiResponse}</p>
+                <p><strong><h3>AI :</h3></strong> {msg.aiResponse}</p>
               </div>
             </div>
           ))}

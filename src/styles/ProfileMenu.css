@@ -85,12 +85,12 @@
 }
 
 [data-theme="dark"] {
-  --button-bg: #282c34;
+  --button-bg: #061428;
   --button-text: #ffffff;
   --button-hover: #3a3f4b;
-  --dropdown-bg: #2a2a2a;
+  --dropdown-bg: #363f50;
   --dropdown-text: #e0e0e0;
   --dropdown-button-text: #ffffff;
-  --dropdown-hover: #3c3c3c;
+  --dropdown-hover: #172628;
   --dropdown-hover-text: #e0e0e0;
 }

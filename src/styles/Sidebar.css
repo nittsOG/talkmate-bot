@@ -1,7 +1,7 @@
 /* Sidebar */
 .sidebar {
   width: 100px;
-  min-width: 280px;
+  min-width: 250px;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
   padding: 10px;
@@ -9,7 +9,7 @@
   position: fixed;
   overflow-y: auto; /* Enables scrolling */
   margin-top: 50px; /* Adjusted for fixed navbar */
-  font-size: 17px;
+  font-size: 15px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 

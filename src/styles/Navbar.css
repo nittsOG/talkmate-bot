@@ -12,7 +12,7 @@
   width: 98%;
   z-index: 1000;
   font-size: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.1s ease, color 0.1s ease;
 }
 
 .navbar h2 {
