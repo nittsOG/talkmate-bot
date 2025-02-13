@@ -33,38 +33,48 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>{isLogin ? "Login" : "Sign Up"}</h2>
-      <form onSubmit={handleAuth}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input 
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {!isLogin && (
+    <div className="login-page">
+      {/* Left Side - Introduction */}
+      <div className="login-intro">
+        <h1>Welcome to TalkMate</h1>
+        <p>Your AI-powered chatbot for seamless conversations.</p>
+        <p>Sign in or create an account to start chatting.</p>
+      </div>
+
+      {/* Right Side - Login Form */}
+      <div className="auth-container">
+        <h2>{isLogin ? "Login" : "Sign Up"}</h2>
+        <form onSubmit={handleAuth}>
           <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
-        )}
-        <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
-        {error && <p className="error">{error}</p>}
-      </form>
-      <button className="toggle-button" onClick={() => setIsLogin(!isLogin)}>
-        {isLogin ? "Create an account" : "Already have an account? Login"}
-      </button>
+          <input 
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {!isLogin && (
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          )}
+          <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
+          {error && <p className="error">{error}</p>}
+        </form>
+        <button className="toggle-button" onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? "Create an account" : "Already have an account? Login"}
+        </button>
+      </div>
     </div>
   );
 };

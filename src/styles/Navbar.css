@@ -21,9 +21,25 @@
 
 /* Ensure primary color adjusts for dark and light modes */
 [data-theme="light"] {
-  --primary-color: #4c77a5;
+  --primary-color: #47709b;
 }
 
 [data-theme="dark"] {
   --primary-color: #1e3a5f;
+}
+
+.logo {
+  margin-left: 10px;
+  font-size: xx-large;
+  transition: transform 0.3s ease-in-out;
+  }
+
+  .logo:hover {
+    transform: scale(1.1);
+}
+
+
+.logo-highlight {
+  color: rgb(209, 248, 251);
+  font-size: smaller;
 }

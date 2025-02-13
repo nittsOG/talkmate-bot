@@ -52,6 +52,7 @@
   border-radius: 5px;
   padding: 10px;
   transition: background 0.3s ease, color 0.3s ease;
+  margin-right: 15px;
 }
 
 /* ✅ Adjust button styles */
