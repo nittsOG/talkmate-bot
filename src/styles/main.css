@@ -1,0 +1,28 @@
+:root {
+  --bg-color-light: #ffffff;
+  --text-color-light: #000000;
+  --bg-color-dark: #181818;
+  --text-color-dark: #ffffff;
+  --primary-color: #4a90e2;
+  --secondary-color: #f4f4f4;
+  --border-color: #dddddd;
+  --hover-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] {
+  --bg-color: var(--bg-color-light);
+  --text-color: var(--text-color-light);
+}
+
+[data-theme="dark"] {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+}
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+  height: 100%;
+  transition: background-color 0.3s, color 0.3s;
+}

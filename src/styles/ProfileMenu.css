@@ -1,4 +1,4 @@
-/* ✅ Updated Profile Button */
+/* Profilemenu.css */
 .button {
   display: flex;
   justify-content: center;
@@ -8,22 +8,24 @@
   height: 36px;
   width: 120px;
   border: none;
-  background: rgb(3, 9, 38);
+  background: var(--button-bg);
   border-radius: 20px;
   cursor: pointer;
   font-size: 20px;
+  color: var(--button-text);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .lable {
   line-height: 20px;
   font-size: 17px;
-  color: white;
+  color: var(--button-text);
   font-family: sans-serif;
   letter-spacing: 1px;
 }
 
 .button:hover {
-  background: rgb(66, 66, 75);
+  background: var(--button-hover);
 }
 
 .button:hover .svg-icon {
@@ -44,11 +46,12 @@
   position: absolute;
   top: 50px;
   right: 0;
-  background: rgb(196, 233, 242);
-  color: rgb(5, 71, 115);
+  background: var(--dropdown-bg);
+  color: var(--dropdown-text);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 10px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ✅ Adjust button styles */
@@ -60,10 +63,34 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  color: rgb(0, 0, 0);
+  color: var(--dropdown-button-text);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .profile-dropdown button:hover {
-  background-color: #c9f7f7;
-  color: rgb(19, 28, 30);
+  background-color: var(--dropdown-hover);
+  color: var(--dropdown-hover-text);
+}
+
+/* Theme Variables */
+[data-theme="light"] {
+  --button-bg: rgb(3, 9, 38);
+  --button-text: white;
+  --button-hover: rgb(66, 66, 75);
+  --dropdown-bg: rgb(196, 233, 242);
+  --dropdown-text: rgb(5, 71, 115);
+  --dropdown-button-text: rgb(0, 0, 0);
+  --dropdown-hover: #c9f7f7;
+  --dropdown-hover-text: rgb(19, 28, 30);
+}
+
+[data-theme="dark"] {
+  --button-bg: #282c34;
+  --button-text: #ffffff;
+  --button-hover: #3a3f4b;
+  --dropdown-bg: #2a2a2a;
+  --dropdown-text: #e0e0e0;
+  --dropdown-button-text: #ffffff;
+  --dropdown-hover: #3c3c3c;
+  --dropdown-hover-text: #e0e0e0;
 }

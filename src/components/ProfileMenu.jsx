@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { auth, db } from "../firebaseConfig"; // ✅ Import db
+import React, { useState, useEffect } from "react";
+import { auth, db } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
 import { collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
 import DeleteAccount from "./DeleteAccount";
@@ -8,6 +8,12 @@ import "../styles/ProfileMenu.css";
 const ProfileMenu = ({ user, refreshSessions }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -50,6 +56,10 @@ const ProfileMenu = ({ user, refreshSessions }) => {
     }
   };
 
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
   return (
     <div className="profile-container">
       <button className="button" onClick={toggleMenu}>
@@ -71,6 +81,9 @@ const ProfileMenu = ({ user, refreshSessions }) => {
           <p>{user.email}</p>
           <button onClick={handleClearData}>🗑 Clear Data</button>
           <button onClick={() => setShowDeleteModal(true)}>🚨 Delete Account</button>
+          <button onClick={toggleTheme}>
+            {theme === "light" ? "🌙 Dark Mode" : "☀ Light Mode"}
+          </button>
           <button onClick={handleLogout}>🚪 Logout</button>
         </div>
       )}

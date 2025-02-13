@@ -1,7 +1,11 @@
+/* app.css */
+
 .app-container {
   display: flex;
   height: 100vh;
-  background-color: #f4f4f4;
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .chat-section {
@@ -13,3 +17,13 @@
   padding: 20px;
 }
 
+/* Theme Variables */
+[data-theme="light"] {
+  --app-bg: #f4f4f4;
+  --app-text: #000000;
+}
+
+[data-theme="dark"] {
+  --app-bg: #1e1e1e;
+  --app-text: #ffffff;
+}
