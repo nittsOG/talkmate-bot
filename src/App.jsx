@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import Login from "./Login";
 import Chat from "./components/Chat";
 import Navbar from "./components/Navbar";
+import Loader from "./components/Loader"; // Import Loader component
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,7 +24,7 @@ function App() {
   }, [navigate]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />; // Use the Loader component instead of plain text
   }
 
   return (
