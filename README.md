@@ -139,6 +139,6 @@ Feel free to **fork** this repository, make improvements, and submit a **pull re
 
 ## 📞 Contact
 
-💌 If you have any questions, reach out to me at **[your.email@example.com](mailto:naitikbarot1677@gmail.com)**
-🔗 GitHub: [github.com/yourusername](https://github.com/nittsOG)
+💌 If you have any questions, reach out to me at **[naitikbarot1677@gmail.com](mailto:naitikbarot1677@gmail.com)**
+🔗 GitHub: [[github.com/yourusername](https://github.com/nittsOG)](https://github.com/nittsOG)
 
