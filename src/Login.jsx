@@ -33,20 +33,28 @@ const Login = () => {
     setError("");
   
     try {
+      let userCredential;
       if (isLogin) {
-        await signInWithEmailAndPassword(auth, email, password);
+        userCredential = await signInWithEmailAndPassword(auth, email, password);
       } else {
         if (password !== confirmPassword) {
           setError("Passwords do not match!");
           return;
         }
-        await createUserWithEmailAndPassword(auth, email, password);
+        userCredential = await createUserWithEmailAndPassword(auth, email, password);
       }
+  
+      // 🔄 Force refresh the auth token after login/signup
+      const user = userCredential.user;
+      const token = await user.getIdToken(true); // Force token refresh
+      console.log("🔄 Token refreshed successfully:", token);
+  
       navigate("/chat"); // Redirect after login/signup
     } catch (err) {
       setError(getFriendlyErrorMessage(err.code)); // Use friendly error messages
     }
   };
+  
   
 
   return (
