@@ -50,6 +50,7 @@ const ProfileMenu = ({ user, refreshSessions }) => {
       }
 
       alert("✅ All data cleared successfully!");
+      window.location.reload();
     } catch (error) {
       console.error("❌ Error clearing data:", error);
       alert("Failed to clear data. Please try again.");
